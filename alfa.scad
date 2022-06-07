@@ -3,7 +3,7 @@ $fn = 50;
 thickness = 1;
 height = 15 + thickness;
 
-linear_extrude(height = thickness)
+module base(thickness) {
     union(1) {
         polygon(points=[
             [11, 36],
@@ -16,49 +16,21 @@ linear_extrude(height = thickness)
             [11, -36],
             [8, -41],
             [-8, -41],
-            [-11, -36]
-        ]);
- 
-        square([53, 73] , center= true);
-     };
- 
- linear_extrude(height= height)    
-  #difference() {
-    union(1) {
-        polygon(points=[
-            [11, 36],
-            [11, 39],
-            [-11, 39],
-            [-11, 36]
-        ]);
- 
-        polygon(points=[
-            [11, -36],
-            [8, -39 - thickness],
-            [-8, -39 - thickness],
             [-11, -36]
         ]);
  
         square([53 + thickness * 2, 73 + thickness + 2] , center= true);
      };
+}
+
+linear_extrude(height = thickness)
+    base(0);
+ 
+ linear_extrude(height= height)    
+  #difference() {
+    base(thickness);
      
-    union(1) {
-        polygon(points=[
-            [11, 36],
-            [11, 39],
-            [-11, 39],
-            [-11, 36]
-        ]);
- 
-        polygon(points=[
-            [11, -36],
-            [8, -41],
-            [-8, -41],
-            [-11, -36]
-        ]);
- 
-        square([53, 73] , center= true);
-     };
+    base(0);
   }
      
 translate([13, 30, 0])
