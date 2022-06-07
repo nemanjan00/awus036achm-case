@@ -46,6 +46,6 @@ translate([-13, 30, 0])
 	circle(d = 3.1);
 
 // Logo and support
-#linear_extrude(height = thickness + 2)
+linear_extrude(height = thickness + 2)
 	offset(0.01)
 	import("logo-black.svg", center = true);
