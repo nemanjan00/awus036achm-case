@@ -23,31 +23,50 @@ module base(thickness) {
 	}
 }
 
-// Base
-linear_extrude(height = thickness)
-	base(0);
+module lower() {
+	union(1) {
+		// Base
+		linear_extrude(height = thickness)
+			base(0);
 
-// Case
-linear_extrude(height= height)
-	#difference() {
-		base(thickness);
+		// Case
+		linear_extrude(height= height)
+			difference() {
+				base(thickness);
 
-		base(0);
+				base(0);
+			}
+
+		// Pole 1
+		translate([13, 30, 0])
+			linear_extrude(height = height)
+			circle(d = 3.8);
+
+		// Pole 2
+		translate([-13, 30, 0])
+			linear_extrude(height = height)
+			circle(d = 3.8);
+
+		// Logo and support
+		scale([0.7, 0.7, 0.7])
+			translate([0, -7, 0])
+			linear_extrude(height = thickness + 2)
+			offset(0.01)
+			import("logo-black.svg", center = true);
 	}
+}
 
-// Pole 1
-translate([13, 30, 0])
-	linear_extrude(height = height)
-	circle(d = 3.8);
+module upper() {
+	union(1) {
+		// Base
+		linear_extrude(height = thickness)
+			base(0);
 
-// Pole 2
-translate([-13, 30, 0])
-	linear_extrude(height = height)
-	circle(d = 3.8);
+		linear_extrude(height = height * 0.2)
+			difference() {
+				base(thickness * -1);
 
-// Logo and support
-scale([0.7, 0.7, 0.7])
-	translate([0, -7, 0])
-	linear_extrude(height = thickness + 2)
-	offset(0.01)
-	import("logo-black.svg", center = true);
+				base(thickness * -2);
+			}
+	}
+}
