@@ -19,7 +19,7 @@ module base(thickness) {
 			[-11, -36]
 		]);
 
-		square([53 + thickness * 2, 73 + thickness + 2] , center= true);
+		square([52.5 + thickness * 2, 72 + thickness + 2] , center= true);
 	}
 }
 
@@ -38,12 +38,12 @@ linear_extrude(height= height)
 // Pole 1
 translate([13, 30, 0])
 	linear_extrude(height = height)
-	circle(d = 3.1);
+	circle(d = 3.8);
 
 // Pole 2
 translate([-13, 30, 0])
 	linear_extrude(height = height)
-	circle(d = 3.1);
+	circle(d = 3.8);
 
 // Logo and support
 linear_extrude(height = thickness + 2)
