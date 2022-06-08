@@ -14,12 +14,12 @@ module base(thickness) {
 
 		polygon(points=[
 			[11, -36],
-			[8, -41.5],
-			[-8, -41.5],
+			[8, -41],
+			[-8, -41],
 			[-11, -36]
 		]);
 
-		square([52.5 + thickness * 2, 72 + thickness + 2] , center= true);
+		square([53 + thickness * 2, 72.5 + thickness * 2] , center= true);
 	}
 }
 
@@ -40,12 +40,12 @@ module lower() {
 		// Pole 1
 		translate([13, 30, 0])
 			linear_extrude(height = height)
-			circle(d = 3.8);
+			circle(d = 3.2);
 
 		// Pole 2
 		translate([-13, 30, 0])
 			linear_extrude(height = height)
-			circle(d = 3.8);
+			circle(d = 3.2);
 
 		// Logo and support
 		scale([0.7, 0.7, 0.7])
