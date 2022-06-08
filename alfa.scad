@@ -60,13 +60,13 @@ module upper() {
 	union(1) {
 		// Base
 		linear_extrude(height = thickness)
-			base(0);
+			base(thickness);
 
 		linear_extrude(height = height * 0.2)
 			difference() {
-				base(thickness * -1);
+				base(0);
 
-				base(thickness * -2);
+				base(thickness * -1);
 			}
 	}
 }
